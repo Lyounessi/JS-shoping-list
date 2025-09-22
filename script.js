@@ -72,9 +72,27 @@ function checkUI(){
     }
 }
 
-// event listner
+// filter input function
+function filterElement(e){
+    const items = document.querySelectorAll("li");
+    const text = e.target.value.toLowerCase();
+    items.forEach((item) =>{
+    const itemName = item.firstChild.textContent.toLocaleLowerCase();
+    if (itemName.indexOf(text) != -1){
+        item.style.display = 'flex';
+    }else{
+        item.style.display = 'none'
+    }
 
+    });
+}
+
+
+
+
+// event listner
 itemFrom.addEventListener("submit", addItem);
 itemList.addEventListener("click", removeItem);
+itemFilter.addEventListener("input", filterElement)
 clearAllButton.addEventListener('click', removeItems);
 checkUI();
